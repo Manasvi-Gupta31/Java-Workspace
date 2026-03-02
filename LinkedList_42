@@ -1,0 +1,77 @@
+// write a program to create and display a Linked List
+
+import java.util.Scanner;
+
+public class LinkedList_42 {
+
+    // Node structure
+    static class Node {
+        int data;     
+        Node next;    
+
+        Node(int value) {
+            data = value;
+            next = null;
+        }
+    }
+
+    Node head = null;   // starting node of linked list
+
+    // function to insert element at the end
+    void insert(int value) {
+
+        Node newNode = new Node(value);
+
+        // if list is empty
+        if (head == null) {
+            head = newNode;
+        } 
+        else {
+            Node temp = head;
+
+            // move till last node
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+
+            temp.next = newNode; // attach new node
+        }
+    }
+
+    // function to display linked list
+    void display() {
+
+        Node temp = head;
+
+        System.out.println("\nLinked List is:");
+
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        LinkedList_42 list = new LinkedList_42();
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        // taking input from user
+        for (int i = 1; i <= n; i++) {
+            System.out.print("Enter element " + i + ": ");
+            int value = sc.nextInt();
+            list.insert(value);
+        }
+
+        // display list
+        list.display();
+
+        sc.close();
+    }
+}
